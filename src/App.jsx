@@ -16,6 +16,7 @@ export default observer(({ defaultImg, headLeft, headRight, isDark, boxClassName
   const getFile = useSetImg(stores);
   const workplace = stores.editor.img?.src ? <Editor /> : <Init />
   const [messageApi, contextHolder] = message.useMessage();
+  let listenerRegistered = false;
   stores.editor.setMessage(messageApi);
   stores.editor.setClearFun(onClear);
   useMemo(() => {
@@ -25,6 +26,22 @@ export default observer(({ defaultImg, headLeft, headRight, isDark, boxClassName
   useEffect(() => {
     if (defaultImg) getFile(defaultImg, 'dataURL');
   }, [defaultImg]);
+  // 从父窗口中获取图片
+  useEffect(() => {
+    if (window.self !== window.top) {
+      if (!listenerRegistered) {
+        // 只注册一次
+        window.parent.postMessage({ type: 'getImageDateURL' }, '*');
+        window.addEventListener('message', (e) => {
+          console.log(e.data)
+          if (e.data.from === 'wiseEditor') {
+            getFile(e.data.data, 'dataURL');
+          }
+        });
+        listenerRegistered = true;
+      }
+    }
+  }, []); // 依赖数组为空，表示只在组件挂载时执行一次
   return (
     <StyleProvider>
       <ConfigProvider
@@ -33,7 +50,7 @@ export default observer(({ defaultImg, headLeft, headRight, isDark, boxClassName
         }}
       >
         {contextHolder}
-        <div id="shoteasy-container" className={cn("polka flex flex-col overflow-hidden antialiased w-full h-[100vh] dark:bg-black", boxClassName)} data-mode={stores.editor.isDark?'dark':'light'}>
+        <div id="shoteasy-container" className={cn("polka flex flex-col overflow-hidden antialiased w-full h-[100vh] dark:bg-black", boxClassName)} data-mode={stores.editor.isDark ? 'dark' : 'light'}>
           <Header headLeft={headLeft} headRight={headRight} />
           <div className="flex flex-col flex-1 h-0 md:flex-row md:items-stretch">
             {workplace}
