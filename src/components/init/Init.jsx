@@ -7,7 +7,7 @@ import stores from '@stores';
 import usePaste from '@hooks/usePaste';
 import useSetImg from '@hooks/useSetImg';
 import { captureScreen } from '@utils/captureScreen';
-import demoPng from '@assets/demo.png';
+// import demoPng from '@assets/demo.png';
 
 const { Dragger } = Upload;
 
@@ -60,14 +60,14 @@ export default observer(() => {
                         <Button shape="round" type="default" size="large" icon={<Icon.ImagePlay size={20} onClick={comingSoon} />} />
                     </Tooltip>
                 </div>
-                <button className="hidden w-full mt-1 rounded-md bg-white dark:bg-black border border-dotted dark:border-gray-700 shadow-sm flex justify-between items-center p-1 hover:bg-slate-50 dark:hover:bg-gray-900 hover:px-1.5" onClick={handleTry}>
+                {/* <button className="hidden w-full mt-1 rounded-md bg-white dark:bg-black border border-dotted dark:border-gray-700 shadow-sm flex justify-between items-center p-1 hover:bg-slate-50 dark:hover:bg-gray-900 hover:px-1.5" onClick={handleTry}>
                     <div className="overflow-hidden rounded-sm w-8">
                         <img src={demoPng} className="w-full" />
                     </div>
                     <div className="text-xs text-gray-500">
                         Give it a try ✨
                     </div>
-                </button>
+                </button> */}
             </div>
         </div>
     )
