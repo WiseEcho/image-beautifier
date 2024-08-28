@@ -53,7 +53,10 @@ export default observer(() => {
         <div className="border-t border-gray-200 dark:border-gray-800 py-2 divide-y dark:divide-gray-700" data-mode={stores.editor.isDark ? 'dark' : 'light'}>
             {sizeConfig.map(item => (
                 <div key={item.key}>
-                    {item.key !== 'default' && <div className="font-semibold pt-2">{item.title}</div>}
+                    {item.key !== 'default' && <div className="flex items-center">
+                        <img src={item.avatar} alt="Icon" className="w-4 h-4 mr-2 mb-[-8px]" />
+                        <div className="font-semibold pt-2 ">{item.title}</div>
+                    </div>}
                     <section className="flex flex-wrap items-end pb-2">
                         {item.lists.map((child, index) => (
                             <Button
