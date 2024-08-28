@@ -54,7 +54,7 @@ export default observer(() => {
             {sizeConfig.map(item => (
                 <div key={item.key}>
                     {item.key !== 'default' && <div className="flex items-center">
-                        <img src={item.avatar} alt="Icon" className="w-4 h-4 mr-2 mb-[-8px]" />
+                        <img src={item.avatar} alt="Icon" className="w-6 h-6 mr-2 mb-[-8px]" />
                         <div className="font-semibold pt-2 ">{item.title}</div>
                     </div>}
                     <section className="flex flex-wrap items-end pb-2">
