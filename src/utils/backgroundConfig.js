@@ -209,6 +209,7 @@ export default {
             color: '#fb7185',
         },
     },
+
     gradient_1: {
         class: 'bg-gradient-to-br from-[#ff6432] from-12.8% via-[#ff0065] via-43.52% to-[#7b2eff] to-84.34%',
         fill: {
@@ -242,6 +243,204 @@ export default {
             from: 'top-left',
             to: 'bottom-right',
             stops: ['#f9f047', '#0fd850'],
+        },
+    },
+    gradient_4: {
+        class: 'bg-gradient-to-r from-[#00c6ff] to-[#0072ff]',
+        fill: {
+            type: 'linear',
+            from: 'left',
+            to: 'right',
+            stops: ['#00c6ff', '#0072ff'],
+        },
+    },
+    gradient_5: {
+        class: 'bg-gradient-to-br from-[#f857a6] from-10% via-[#ff5858] via-50% to-[#ffa751] to-90%',
+        fill: {
+            type: 'linear',
+            from: 'top-left',
+            to: 'bottom-right',
+            stops: [
+                { offset: 0.1, color: '#f857a6' },
+                { offset: 0.5, color: '#ff5858' },
+                { offset: 0.9, color: '#ffa751' },
+            ],
+        },
+    },
+    gradient_6: {
+        class: 'bg-gradient-to-tr from-[#4facfe] to-[#00f2fe]',
+        fill: {
+            type: 'linear',
+            from: 'bottom-left',
+            to: 'top-right',
+            stops: ['#4facfe', '#00f2fe'],
+        },
+    },
+    gradient_7: {
+        class: 'bg-gradient-to-r from-[#fa709a] from-0% via-[#fee140] via-50% to-[#ffba56] to-100%',
+        fill: {
+            type: 'linear',
+            from: 'left',
+            to: 'right',
+            stops: [
+                { offset: 0, color: '#fa709a' },
+                { offset: 0.5, color: '#fee140' },
+                { offset: 1, color: '#ffba56' },
+            ],
+        },
+    },
+    gradient_8: {
+        class: 'bg-gradient-to-bl from-[#43e97b] to-[#38f9d7]',
+        fill: {
+            type: 'linear',
+            from: 'top-right',
+            to: 'bottom-left',
+            stops: ['#43e97b', '#38f9d7'],
+        },
+    },
+    gradient_9: {
+        class: 'bg-gradient-to-r from-[#fa8bff] from-5% via-[#2bd2ff] via-50% to-[#2bff88] to-95%',
+        fill: {
+            type: 'linear',
+            from: 'left',
+            to: 'right',
+            stops: [
+                { offset: 0.05, color: '#fa8bff' },
+                { offset: 0.5, color: '#2bd2ff' },
+                { offset: 0.95, color: '#2bff88' },
+            ],
+        },
+    },
+    gradient_10: {
+        class: 'bg-gradient-to-tr from-[#30cfd0] to-[#330867]',
+        fill: {
+            type: 'linear',
+            from: 'bottom-left',
+            to: 'top-right',
+            stops: ['#30cfd0', '#330867'],
+        },
+    },
+    gradient_11: {
+        class: 'bg-gradient-to-br from-[#a1c4fd] from-0% via-[#c2e9fb] via-60% to-[#e8d9f5] to-100%',
+        fill: {
+            type: 'linear',
+            from: 'top-left',
+            to: 'bottom-right',
+            stops: [
+                { offset: 0, color: '#a1c4fd' },
+                { offset: 0.6, color: '#c2e9fb' },
+                { offset: 1, color: '#e8d9f5' },
+            ],
+        },
+    },
+    gradient_12: {
+        class: 'bg-gradient-to-r from-[#f83600] to-[#f9d423]',
+        fill: {
+            type: 'linear',
+            from: 'left',
+            to: 'right',
+            stops: ['#f83600', '#f9d423'],
+        },
+    },
+    gradient_13: {
+        class: 'bg-gradient-to-br from-[#667eea] from-15% via-[#764ba2] via-55% to-[#6B8DD6] to-85%',
+        fill: {
+            type: 'linear',
+            from: 'top-left',
+            to: 'bottom-right',
+            stops: [
+                { offset: 0.15, color: '#667eea' },
+                { offset: 0.55, color: '#764ba2' },
+                { offset: 0.85, color: '#6B8DD6' },
+            ],
+        },
+    },
+    gradient_14: {
+        class: 'bg-gradient-to-tr from-[#48c6ef] to-[#6f86d6]',
+        fill: {
+            type: 'linear',
+            from: 'bottom-left',
+            to: 'top-right',
+            stops: ['#48c6ef', '#6f86d6'],
+        },
+    },
+    gradient_15: {
+        class: 'bg-gradient-to-r from-[#00dbde] from-0% via-[#fc00ff] via-50% to-[#00dbde] to-100%',
+        fill: {
+            type: 'linear',
+            from: 'left',
+            to: 'right',
+            stops: [
+                { offset: 0, color: '#00dbde' },
+                { offset: 0.5, color: '#fc00ff' },
+                { offset: 1, color: '#00dbde' },
+            ],
+        },
+    },
+    gradient_16: {
+        class: 'bg-gradient-to-bl from-[#ff0844] to-[#ffb199]',
+        fill: {
+            type: 'linear',
+            from: 'top-right',
+            to: 'bottom-left',
+            stops: ['#ff0844', '#ffb199'],
+        },
+    },
+    gradient_17: {
+        class: 'bg-gradient-to-br from-[#8ec5fc] from-10% via-[#e0c3fc] via-50% to-[#ffdee9] to-90%',
+        fill: {
+            type: 'linear',
+            from: 'top-left',
+            to: 'bottom-right',
+            stops: [
+                { offset: 0.1, color: '#8ec5fc' },
+                { offset: 0.5, color: '#e0c3fc' },
+                { offset: 0.9, color: '#ffdee9' },
+            ],
+        },
+    },
+    gradient_18: {
+        class: 'bg-gradient-to-r from-[#09203f] to-[#537895]',
+        fill: {
+            type: 'linear',
+            from: 'left',
+            to: 'right',
+            stops: ['#09203f', '#537895'],
+        },
+    },
+    gradient_19: {
+        class: 'bg-gradient-to-br from-[#ff758c] from-5% via-[#ff7eb3] via-45% to-[#ff7eb3] to-95%',
+        fill: {
+            type: 'linear',
+            from: 'top-left',
+            to: 'bottom-right',
+            stops: [
+                { offset: 0.05, color: '#ff758c' },
+                { offset: 0.45, color: '#ff7eb3' },
+                { offset: 0.95, color: '#ff7eb3' },
+            ],
+        },
+    },
+    gradient_20: {
+        class: 'bg-gradient-to-tr from-[#0ba360] to-[#3cba92]',
+        fill: {
+            type: 'linear',
+            from: 'bottom-left',
+            to: 'top-right',
+            stops: ['#0ba360', '#3cba92'],
+        },
+    },
+    gradient_21: {
+        class: 'bg-gradient-to-br from-[#d53369] from-0% via-[#daae51] via-65% to-[#e9d362] to-100%',
+        fill: {
+            type: 'linear',
+            from: 'top-left',
+            to: 'bottom-right',
+            stops: [
+                { offset: 0, color: '#d53369' },
+                { offset: 0.65, color: '#daae51' },
+                { offset: 1, color: '#e9d362' },
+            ],
         },
     },
     cosmic_img_1: {
