@@ -37,7 +37,7 @@ export const BackgroundSelect = ({ type, options, onChange, value }) => {
                 >
                     {isImg.includes(type) ? (
                         <div className={cn('w-12 h-8 rounded-md overflow-hidden')}>
-                            <img src={`${item.value.class}&w=48`} className='w-full h-full object-cover object-center' />
+                            <img src={`${item.value.class}`} className='w-full h-full object-cover object-center' />
                         </div>
                     ) : (
                         <div className={cn('w-8 h-8 rounded-full overflow-hidden', item.value.class)}></div>
