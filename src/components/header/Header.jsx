@@ -11,9 +11,10 @@ import EmojiSelect from './EmojiSelect';
 import Logo from './Logo';
 import MediaLogo from './MediaLogo';
 
-const toolList = ['Square', 'SquareFill', 'Circle', 'Slash', 'MoveDownLeft', 'Pencil', 'Magnifier', 'Step', 'Smile'];
+// const toolList = ['Square', 'SquareFill', 'Circle', 'Slash', 'MoveDownLeft', 'Pencil', 'Magnifier', 'Step', 'Smile'];
+const toolList = ['Square', 'SquareFill', 'Circle', 'Slash', 'MoveDownLeft', 'Pencil', 'Magnifier', 'Step'];
 
-export default observer(({headLeft, headRight}) => {
+export default observer(({ headLeft, headRight }) => {
     const [isMove, setIsMove] = useState(false);
     // const handleUndo = () => {
     //     stores.editor.createSnap();
@@ -54,7 +55,7 @@ export default observer(({headLeft, headRight}) => {
     }
     return (
         <div className='flex items-center justify-center shrink-0 gap-3 bg-white dark:bg-black py-2 px-5 border-b border-b-gray-50 dark:border-b-gray-700 shadow-sm relative z-[11] select-none'>
-            <div className="flex-1">
+            <div className="hidden flex-1">
                 {headLeft ? headLeft : <Logo />}
             </div>
             {/* Todo */}
@@ -78,7 +79,7 @@ export default observer(({headLeft, headRight}) => {
             <Divider type='vertical' /> */}
             <div className='flex gap-1 justify-center items-center'>
                 {toolList.map(item => {
-                    if (item === 'Smile') return (<EmojiSelect key={item} disabled={false} theme={stores.editor.isDark?'dark':'light'} toSelect={handleSelectEmoji} />);
+                    if (item === 'Smile') return (<EmojiSelect key={item} disabled={false} theme={stores.editor.isDark ? 'dark' : 'light'} toSelect={handleSelectEmoji} />);
                     let icon;
                     if (item.includes('Fill')) {
                         const type = item.replace('Fill', '');
@@ -110,7 +111,7 @@ export default observer(({headLeft, headRight}) => {
                     size='small'
                     presets={[
                         {
-                            label: 'Recommended',
+                            label: '推荐颜色',
                             colors: [
                                 '#ffffff',
                                 '#444444',
@@ -137,7 +138,7 @@ export default observer(({headLeft, headRight}) => {
                 />
             </div>
             {/* <Divider type='vertical' /> */}
-            {headRight ? headRight :
+            {/* {headRight ? headRight :
                 <MediaLogo>
                     <Button
                         type="text"
@@ -146,7 +147,7 @@ export default observer(({headLeft, headRight}) => {
                         onClick={handleSetTheme}
                     ></Button>
                 </MediaLogo>
-            }
+            } */}
         </div>
     );
 });
