@@ -25,6 +25,7 @@ if (type === 'lib') {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: './',
     resolve: {
         alias: {
             '@components': resolve('./src/components'),
