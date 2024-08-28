@@ -8,7 +8,7 @@ import { text2Svg } from '@utils/utils';
 
 export default observer(() => {
     const [useWater, setUseWater] = useState(false);
-    const [waterCont, setWaterCont] = useState('ShotEasy');
+    const [waterCont, setWaterCont] = useState('版权所有');
     const [waterColor, setWaterColor] = useState('#00000030');
     const [direction, setDirection] = useState(45);
     const handleColorChange = (color) => {
@@ -29,18 +29,18 @@ export default observer(() => {
     return (
         <>
             <div className="[&_label]:font-semibold [&_label]:text-sm flex gap-4 items-center justify-between">
-                <label>Watermark</label>
+                <label>水印</label>
                 <Switch defaultChecked={useWater} onChange={setUseWater} size="small" className="bg-slate-200" />
             </div>
             {useWater &&
                 <div className="[&_label]:font-semibold [&_label]:text-xs grid gap-3 pl-2 pt-2">
                     <Input defaultValue={waterCont} placeholder="Watermark content" onChange={(e) => setWaterCont(e.target.value)} />
                     <div className="flex items-center justify-between">
-                        <label>Color</label>
+                        <label>颜色</label>
                         <ColorPicker value={waterColor} onChange={handleColorChange} size="small" />
                     </div>
                     <div className="flex items-center justify-between">
-                        <label>Direction</label>
+                        <label>方向</label>
                         <div>
                             <Radio.Group defaultValue={direction} onChange={(e) => setDirection(e.target.value)} size="small">
                                 <Radio.Button value={-45}><Icon.ArrowUpRight size={16} className="mt-[3px]" /></Radio.Button>
@@ -49,7 +49,7 @@ export default observer(() => {
                         </div>
                     </div>
                     <div className="flex items-center justify-between">
-                        <label>Only Background</label>
+                        <label>仅背景</label>
                         <Switch size="small" onChange={(checked) => stores.option.setWaterIndex(checked ? -1 : 1)} className="bg-slate-200" />
                     </div>
                 </div>

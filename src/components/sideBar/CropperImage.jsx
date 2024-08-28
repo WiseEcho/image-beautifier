@@ -37,7 +37,7 @@ export default observer(() => {
     };
     return (
         <>
-            <Tooltip title='Crop Image'>
+            <Tooltip title='裁剪'>
                 <Button
                     type='text'
                     shape='circle'
@@ -46,9 +46,11 @@ export default observer(() => {
                 ></Button>
             </Tooltip>
             <Modal
-                title='Cropper'
+                title='裁剪'
                 open={isModalOpen}
                 onOk={handleOk}
+                okText='确定'
+                cancelText='取消'
                 onCancel={handleCancel}
                 destroyOnClose={true}
             >

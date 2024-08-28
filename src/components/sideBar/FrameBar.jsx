@@ -23,13 +23,13 @@ export default observer(() => {
         <>
             <div className="[&_label]:font-semibold [&_label]:text-sm">
                 <div className="flex justify-between items-center">
-                    <label>Frame</label>
+                    <label>边框</label>
                     <Button
                         type="text"
                         size="small"
                         className="text-xs flex items-center opacity-80 m-0"
                         onClick={() => setShowMore(true)}
-                    >More <Icon.ChevronRight size={16} /></Button>
+                    >更多 <Icon.ChevronRight size={16} /></Button>
                 </div>
                 <div className="py-3 [&_.ant-radio-wrapper_span]:p-0 [&_.ant-radio-wrapper_span]:px-1">
                     <Radio.Group
@@ -97,10 +97,10 @@ export default observer(() => {
                             icon={<Icon.ChevronRight size={16} />}
                             iconPosition="end"
                             onClick={() => setShowMore(false)}
-                        >Back</Button>
+                        >返回</Button>
                     </div>
                     <div className="h-0 flex-1 overflow-y-auto px-4 py-2">
-                        <h4 className="text-sm font-bold py-2">Browser</h4>
+                        <h4 className="text-sm font-bold py-2">浏览器</h4>
                         <div className="py-3 [&_.ant-radio-wrapper_span]:p-0 [&_.ant-radio-wrapper_span]:px-1">
                             <Radio.Group
                                 rootClassName="grid grid-cols-3"
@@ -112,8 +112,8 @@ export default observer(() => {
                                         <div className="bg-slate-300/40 h-12 w-[85%] rounded-sm shadow-md mt-2 ml-3 overflow-hidden">
                                             <div className="bg-white/90 px-0.5">
                                                 <div className="h-2.5 bg-no-repeat bg-[right_center] bg-[auto_100%]" style={{
-                                                backgroundImage: `url(${ windowDark })`,
-                                            }} />
+                                                    backgroundImage: `url(${windowDark})`,
+                                                }} />
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@ export default observer(() => {
                                         <div className="bg-slate-300/40 h-12 w-[85%] rounded-sm shadow-md mt-2 ml-3 overflow-hidden">
                                             <div className="bg-black/90 px-0.5">
                                                 <div className="h-2.5 bg-no-repeat bg-[right_center] bg-[auto_100%]" style={{
-                                                    backgroundImage: `url(${ windowLight })`,
+                                                    backgroundImage: `url(${windowLight})`,
                                                 }} />
                                             </div>
                                         </div>
@@ -132,15 +132,15 @@ export default observer(() => {
                             </Radio.Group>
                         </div>
                         <div className="flex justify-between items-center py-2">
-                            <h4 className="text-sm font-bold">Devices</h4>
+                            <h4 className="text-sm font-bold">设备</h4>
                             <Radio.Group
                                 value={stores.option.frameMode}
                                 onChange={(e) => stores.option.setFrameMode(e.target.value)}
                                 size="small"
                             >
-                                <Radio.Button value="cover">Cover</Radio.Button>
-                                <Radio.Button value="fit">Contain</Radio.Button>
-                                <Radio.Button value="strench">Stretch</Radio.Button>
+                                <Radio.Button value="cover">覆盖</Radio.Button>
+                                <Radio.Button value="fit">包含</Radio.Button>
+                                <Radio.Button value="strench">拉伸</Radio.Button>
                             </Radio.Group>
                         </div>
                         <div className="py-3 [&_.ant-radio-wrapper_span]:p-0 [&_.ant-radio-wrapper_span]:px-1">
@@ -151,27 +151,27 @@ export default observer(() => {
                             >
                                 <Radio className="[&_.ant-radio]:hidden [&_span]:mr-0 [&_span]:block [&_span]:w-full" value='macbookpro16'>
                                     <div className="bg-gray-300/30 rounded-md h-14 overflow-hidden bg-no-repeat bg-[10px_-5px] bg-[100px_auto]" style={{
-                                        backgroundImage: `url(${ macbookpro })`,
+                                        backgroundImage: `url(${macbookpro})`,
                                     }} />
                                 </Radio>
                                 <Radio className="[&_.ant-radio]:hidden [&_span]:mr-0 [&_span]:block [&_span]:w-full" value='macbookair'>
                                     <div className="bg-gray-300/30 rounded-md h-14 overflow-hidden bg-no-repeat bg-[13px_-6px] bg-[92px_auto]" style={{
-                                        backgroundImage: `url(${ macbookair })`,
+                                        backgroundImage: `url(${macbookair})`,
                                     }} />
                                 </Radio>
                                 <Radio className="[&_.ant-radio]:hidden [&_span]:mr-0 [&_span]:block [&_span]:w-full" value='imacpro'>
                                     <div className="bg-gray-300/30 rounded-md h-14 overflow-hidden bg-no-repeat bg-[13px_top] bg-[90px_auto]" style={{
-                                        backgroundImage: `url(${ imacpro })`,
+                                        backgroundImage: `url(${imacpro})`,
                                     }} />
                                 </Radio>
                                 <Radio className="[&_.ant-radio]:hidden [&_span]:mr-0 [&_span]:block [&_span]:w-full" value='ipadpro'>
                                     <div className="bg-gray-300/30 rounded-md h-14 overflow-hidden bg-no-repeat bg-[center_top] bg-[100px_auto]" style={{
-                                        backgroundImage: `url(${ ipadpro })`,
+                                        backgroundImage: `url(${ipadpro})`,
                                     }} />
                                 </Radio>
                                 <Radio className="[&_.ant-radio]:hidden [&_span]:mr-0 [&_span]:block [&_span]:w-full" value='iphonepro'>
                                     <div className="bg-gray-300/30 rounded-md h-14 overflow-hidden bg-no-repeat bg-[center_top] bg-[100px_auto]" style={{
-                                        backgroundImage: `url(${ iphonepro })`,
+                                        backgroundImage: `url(${iphonepro})`,
                                     }} />
                                 </Radio>
                             </Radio.Group>

@@ -29,22 +29,34 @@ export default observer(() => {
         stores.editor.message.open({
             key,
             type: 'loading',
-            content: 'Downloading...',
+            content: '下载中...',
         });
         await stores.editor.app.tree.export(format, option).then(result => {
-            let name = `ShotEasy`;
-            if (ratio > 1) name += `@${ ratio }`;
-            toDownloadFile(result.data, `${ name }.${ format }`);
+            function generateRandomString(length) {
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                let result = '';
+                const charactersLength = characters.length;
+
+                for (let i = 0; i < length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                }
+
+                return result;
+            }
+
+            let name = generateRandomString(6);
+            if (ratio > 1) name += `@${ratio}`;
+            toDownloadFile(result.data, `${name}.${format}`);
             stores.editor.message.open({
                 key,
                 type: 'success',
-                content: 'Download Success!',
+                content: '下载成功!',
             });
         }).catch(() => {
             stores.editor.message.open({
                 key,
                 type: 'error',
-                content: 'Download failed!',
+                content: '下载失败!',
             });
         })
         setLoading(false);
@@ -57,7 +69,7 @@ export default observer(() => {
         stores.editor.message.open({
             key,
             type: 'loading',
-            content: 'Copying...',
+            content: '复制中...',
         });
         await stores.editor.app.tree.export('png', { blob: true, pixelRatio: ratio }).then(async result => {
             const { data } = result;
@@ -69,13 +81,13 @@ export default observer(() => {
             stores.editor.message.open({
                 key,
                 type: 'success',
-                content: 'Copy Success!',
+                content: '复制成功!',
             });
         }).catch(() => {
             stores.editor.message.open({
                 key,
                 type: 'error',
-                content: 'Copy failed!',
+                content: '复制失败!',
             });
         });
         setLoading(false);
@@ -88,21 +100,21 @@ export default observer(() => {
     useKeyboardShortcuts(() => toDownload(), () => toCopy(), [toDownload, toCopy]);
     const content = (<div>
         <div className="p-2 [&_.ant-segmented]:w-full [&_.ant-segmented-item]:w-[33%]">
-            <div className="text-xs text-gray-400 mb-2">Format</div>
+            <div className="text-xs text-gray-400 mb-2">格式</div>
             <Segmented
-                options={['png', 'jpg' , 'webp']}
+                options={['png', 'jpg', 'webp']}
                 size="middle"
                 onChange={setFormat}
             />
-            <div className="text-xs text-gray-400 mt-2 mb-2">Pixel Ratio</div>
+            <div className="text-xs text-gray-400 mt-2 mb-2">像素比</div>
             <Segmented
-                options={[{value: 1, icon: '1x'},{value: 2, icon: '2x'},{value: 3, icon: '3x'}]}
+                options={[{ value: 1, icon: '1x' }, { value: 2, icon: '2x' }, { value: 3, icon: '3x' }]}
                 size="middle"
                 onChange={setRatio}
             />
             {stores.option.frameConf.width &&
                 <div className="text-xs p-3 mt-4 flex justify-between bg-black/5 rounded-md">
-                    <span className="text-gray-400">Download Size</span>
+                    <span className="text-gray-400">尺寸</span>
                     <span className="text-gray-700">{stores.option.frameConf.width * ratio} x {stores.option.frameConf.height * ratio}</span>
                 </div>
             }
@@ -114,14 +126,14 @@ export default observer(() => {
                 theme={{
                     components: {
                         Button: {
-                            colorPrimary: stores.editor.isDark ? '#2b4acb':'#000',
+                            colorPrimary: stores.editor.isDark ? '#2b4acb' : '#000',
                             algorithm: true, // 启用算法
                         },
                     },
                 }}
             >
                 <div className='ant-space-compact flex flex-1'>
-                    <Tooltip placement='top' title={<span>Download {modKey} + S</span>}>
+                    <Tooltip placement='top' title={<span>下载 {modKey} + S</span>}>
                         <Button
                             type='primary'
                             size='large'
@@ -132,13 +144,13 @@ export default observer(() => {
                         >
                             <div className='leading-4 px-2'>
                                 <div className='text-sm leading-4 font-semibold'>
-                                    Download
+                                    下载
                                 </div>
-                                <div className='text-xs'>{ratio}x as {format.toLocaleUpperCase()}</div>
+                                <div className='text-xs'>{ratio}x {format.toLocaleUpperCase()}</div>
                             </div>
                         </Button>
                     </Tooltip>
-                    <Tooltip placement='top' title={<span>Copy {modKey} + C</span>}>
+                    <Tooltip placement='top' title={<span>复制 {modKey} + C</span>}>
                         <Button
                             type='primary'
                             size='large'
@@ -164,14 +176,14 @@ export default observer(() => {
                 >
                     <Button size='large' icon={<Icon.Settings2 size={18} />} />
                 </Popover>
-                {stores.editor.img?.src && 
+                {stores.editor.img?.src &&
                     <Popconfirm
-                        title="Delete the screenshot"
-                        description="Are you sure to delete this screenshot?"
+                        title="删除图片"
+                        // description="确定要删除吗？"
                         placement="topRight"
                         onConfirm={confirm}
-                        okText="Yes"
-                        cancelText="No"
+                        okText="是"
+                        cancelText="否"
                     >
                         <Button size='large' icon={<Icon.Trash2 size={18} />} />
                     </Popconfirm>

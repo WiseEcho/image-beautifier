@@ -15,7 +15,7 @@ class Editor {
     theme = 'light';
     clearFun = null;
     snap = null;
-    constructor () {
+    constructor() {
         makeAutoObservable(this)
     }
 
@@ -30,7 +30,7 @@ class Editor {
     get isEditing() {
         const is = !!this.app?.tree;
         if (!is) {
-            this.message.info('Please add a image');
+            this.message.info('请先添加图片');
             this.setInvalid();
         }
         return is;
@@ -131,7 +131,7 @@ class Editor {
         this.app.editor.app.config.move.drag = false;
         this.app.editor.hittable = value;
     }
-    
+
 
     setAnnotateColor(color) {
         this.annotateColor = color;

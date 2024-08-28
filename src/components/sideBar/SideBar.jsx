@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Icon from '@components/Icon';
-import { Button, Slider, Radio } from 'antd';
+import { Button, Slider, Radio, Tooltip } from 'antd';
 import ColorPicker from '@components/ColorPicker';
 import stores from '@stores';
 import backgroundConfig from '@utils/backgroundConfig';
@@ -26,21 +26,25 @@ export default observer(() => {
             <div className="flex-1 flex-col gap-2 p-4 overflow-y-auto overflow-x-hidden">
                 <SizeBar />
                 <div className="[&_label]:font-semibold pt-2 [&_label]:text-sm">
-                    <label>Quick</label>
+                    <label>操作</label>
                     <div className="flex gap-4 items-center py-2">
                         <CropperImage />
-                        <Button
-                            type='text'
-                            shape='circle'
-                            onClick={() => stores.option.toggleFlip('x')}
-                            icon={<Icon.FlipHorizontal2 size={18} />}
-                        ></Button>
-                        <Button
-                            type='text'
-                            shape='circle'
-                            onClick={() => stores.option.toggleFlip('y')}
-                            icon={<Icon.FlipVertical2 size={18} />}
-                        ></Button>
+                        <Tooltip title='左右翻转'>
+                            <Button
+                                type='text'
+                                shape='circle'
+                                onClick={() => stores.option.toggleFlip('x')}
+                                icon={<Icon.FlipHorizontal2 size={18} />}
+                            ></Button>
+                        </Tooltip>
+                        <Tooltip title='上下翻转'>
+                            <Button
+                                type='text'
+                                shape='circle'
+                                onClick={() => stores.option.toggleFlip('y')}
+                                icon={<Icon.FlipVertical2 size={18} />}
+                            ></Button>
+                        </Tooltip>
                         <Position />
                         {/* Todo */}
                         {/* <Button
@@ -56,7 +60,7 @@ export default observer(() => {
                     </div>
                 </div>
                 <div className="[&_label]:font-semibold [&_label]:text-sm">
-                    <label>Scale</label>
+                    <label>缩放</label>
                     <Slider
                         min={0.1}
                         max={3}
@@ -67,7 +71,7 @@ export default observer(() => {
                 </div>
                 <div className="[&_label]:font-semibold [&_label]:text-sm">
                     <div className="flex justify-between">
-                        <label>Padding</label>
+                        <label>边距</label>
                         <ColorPicker value={stores.option.paddingBg} onChange={(e) => stores.option.setPaddingBg(e.toRgbString())} size="small" />
                     </div>
                     <Slider
@@ -78,7 +82,7 @@ export default observer(() => {
                     />
                 </div>
                 <div className="[&_label]:font-semibold [&_label]:text-sm">
-                    <label>Rounded</label>
+                    <label>圆角</label>
                     <Slider
                         min={0}
                         max={20}
@@ -87,7 +91,7 @@ export default observer(() => {
                     />
                 </div>
                 <div className="[&_label]:font-semibold [&_label]:text-sm">
-                    <label>Shadow</label>
+                    <label>阴影</label>
                     <Slider
                         min={0}
                         max={6}
@@ -98,13 +102,13 @@ export default observer(() => {
                 <FrameBar />
                 <div className="[&_label]:font-semibold [&_label]:text-sm">
                     <div className="flex justify-between items-center">
-                        <label>Background</label>
+                        <label>背景</label>
                         <Button
                             type="text"
                             size="small"
                             className="text-xs flex items-center opacity-80 m-0"
                             onClick={() => setShowMore(true)}
-                        >More <Icon.ChevronRight size={16} /></Button>
+                        >更多 <Icon.ChevronRight size={16} /></Button>
                     </div>
                     <div className="py-3">
                         <Radio.Group

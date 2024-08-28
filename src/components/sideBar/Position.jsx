@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Icon from '@components/Icon';
-import { Button, Popover } from 'antd';
+import { Button, Popover, Tooltip } from 'antd';
 import { cn } from '@utils/utils';
 import stores from '@stores';
 
@@ -35,12 +35,14 @@ export default observer(() => {
             open={open}
             onOpenChange={handleOpenChange}
         >
-            <Button
-                type='text'
-                shape='circle'
-                className={cn(open && "shadow-md")}
-                icon={<Icon.LayoutGrid size={18} />}
-            ></Button>
+            <Tooltip title='位置'>
+                <Button
+                    type='text'
+                    shape='circle'
+                    className={cn(open && "shadow-md")}
+                    icon={<Icon.LayoutGrid size={18} />}
+                ></Button>
+            </Tooltip>
         </Popover>
     )
 })

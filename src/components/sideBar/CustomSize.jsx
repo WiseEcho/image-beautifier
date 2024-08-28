@@ -9,7 +9,7 @@ export default ({ frameWidth, frameHeight, type, onSet }) => {
         onSet({ type: 'auto', title: 'Auto' });
     };
     const setCustom = () => {
-        onSet({ type: 'custom', title: 'Custom', width, height });
+        onSet({ type: 'custom', title: '自定义', width, height });
     };
     useEffect(() => {
         if (type === 'custom') {
@@ -27,7 +27,7 @@ export default ({ frameWidth, frameHeight, type, onSet }) => {
                 value={width}
                 onChange={setWidth}
                 placeholder={frameWidth}
-                prefix={<span className='opacity-60 mx-1'>W</span>}
+                prefix={<span className='opacity-60 mx-1'>宽</span>}
                 className='flex-1'
             />
             <span className='text-xs opacity-50'>x</span>
@@ -36,7 +36,7 @@ export default ({ frameWidth, frameHeight, type, onSet }) => {
                 value={height}
                 onChange={setHeight}
                 placeholder={frameHeight}
-                prefix={<span className='opacity-60 mx-1'>H</span>}
+                prefix={<span className='opacity-60 mx-1'>高</span>}
                 className='flex-1'
             />
             <Button
@@ -46,7 +46,7 @@ export default ({ frameWidth, frameHeight, type, onSet }) => {
                 disabled={!width || !height}
                 onClick={setCustom}
             ></Button>
-            <Tooltip title="Auto size">
+            <Tooltip title="自适应">
                 <Button
                     type='primary'
                     shape='circle'

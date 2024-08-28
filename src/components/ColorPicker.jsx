@@ -18,7 +18,9 @@ export default (props) => {
         panelRender={(panel) => (
             <>
                 {window.EyeDropper && <div className="mb-1">
-                    <Button type="text" shape="circle" size="small" icon={<Icon.Pipette size={16} />} onClick={useDropper} />
+                    <Button type="text" size="small" icon={<Icon.Pipette size={16} />} onClick={useDropper} >
+                        屏幕取色
+                    </Button>
                 </div>}
                 {panel}
             </>

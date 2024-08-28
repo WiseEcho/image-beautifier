@@ -33,7 +33,7 @@ export default observer(() => {
         hide();
         if (value.type === 'auto' && stores.editor.img.width) {
             const margin = getMargin(stores.editor.img.width, stores.editor.img.height);
-            stores.option.setSize({...value, width: stores.editor.img.width + margin, height: stores.editor.img.height + margin});
+            stores.option.setSize({ ...value, width: stores.editor.img.width + margin, height: stores.editor.img.height + margin });
             return;
         }
         stores.option.setSize(value);
@@ -42,7 +42,7 @@ export default observer(() => {
         hide();
         stores.option.setSize({
             type: key,
-            title: `${ title }${ item.title ? ` ${item.title} `:' ' }${ item.w } : ${ item.h }`,
+            title: `${title}${item.title ? ` ${item.title} ` : ' '}${item.w} : ${item.h}`,
             width: item.width,
             height: item.height
         });
@@ -50,7 +50,7 @@ export default observer(() => {
     const isShowSize = stores.editor.img?.src || stores.option.size.type !== 'auto';
     const title = <CustomSize type={stores.option.size.type} frameWidth={stores.option.frameConf.width} frameHeight={stores.option.frameConf.height} onSet={onSet} />;
     const content = (
-        <div className="border-t border-gray-200 dark:border-gray-800 py-2 divide-y dark:divide-gray-700" data-mode={stores.editor.isDark?'dark':'light'}>
+        <div className="border-t border-gray-200 dark:border-gray-800 py-2 divide-y dark:divide-gray-700" data-mode={stores.editor.isDark ? 'dark' : 'light'}>
             {sizeConfig.map(item => (
                 <div key={item.key}>
                     {item.key !== 'default' && <div className="font-semibold pt-2">{item.title}</div>}
@@ -99,8 +99,8 @@ export default observer(() => {
                 />
                 <div className='text-xs'>
                     <div className='font-semibold leading-3 mb-0.5'>{stores.option.size.title}</div>
-                    {!isShowSize ? 
-                        <div className='text-gray-500 leading-3'>Adaptive screenshot size</div> :
+                    {!isShowSize ?
+                        <div className='text-gray-500 leading-3'>自适应图片尺寸</div> :
                         <div className='text-gray-500 leading-3'>
                             {stores.option.frameConf.width} x {stores.option.frameConf.height} px
                         </div>

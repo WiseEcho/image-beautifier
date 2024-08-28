@@ -17,7 +17,7 @@ class Option {
     waterIndex = 1;
     size = {
         type: 'auto',
-        title: 'Auto'
+        title: '自动'
     };
     frameConf = {
         width: 800,

@@ -41,22 +41,22 @@ export default observer(({ showMore, onChange }) => {
                         icon={<Icon.ChevronRight size={16} />}
                         iconPosition="end"
                         onClick={() => onChange(false)}
-                    >Back</Button>
+                    >返回</Button>
                 </div>
                 <div className="h-0 flex-1 overflow-y-auto px-4 py-2">
-                    <h4 className="text-sm font-bold py-2">Custom</h4>
+                    <h4 className="text-sm font-bold py-2">自定义</h4>
                     <div className="py-1">
                         <ColorPicker onChange={handleCustom}>
                             <Button type="default" size="small" shape="circle" icon={<img src={colorSvg} width={18} />} />
                         </ColorPicker>
                     </div>
-                    <h4 className="text-sm font-bold py-2">Solid Colors</h4>
+                    <h4 className="text-sm font-bold py-2">纯色</h4>
                     <BackgroundSelect type="solid" onChange={onSelectChange} value={stores.option.background} />
-                    <h4 className="text-sm font-bold py-2">Gradients</h4>
+                    <h4 className="text-sm font-bold py-2">渐变</h4>
                     <BackgroundSelect type="gradient" onChange={onSelectChange} value={stores.option.background} />
-                    <h4 className="text-sm font-bold py-2">Cosmic Gradients</h4>
+                    <h4 className="text-sm font-bold py-2">炫彩</h4>
                     <BackgroundSelect type="cosmic" onChange={onSelectChange} value={stores.option.background} />
-                    <h4 className="text-sm font-bold py-2">Desktop</h4>
+                    <h4 className="text-sm font-bold py-2">桌面</h4>
                     <BackgroundSelect type="desktop" onChange={onSelectChange} value={stores.option.background} />
                 </div>
             </div>
