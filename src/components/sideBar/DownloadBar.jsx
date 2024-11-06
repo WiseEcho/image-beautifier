@@ -3,8 +3,7 @@ import { observer } from 'mobx-react-lite';
 import Icon from '@components/Icon';
 import { Button, Tooltip, Popover, Segmented, ConfigProvider, Popconfirm } from 'antd';
 import stores from '@stores';
-import { toDownloadFile, nanoid, modKey } from '@utils/utils';
-import useKeyboardShortcuts from '@hooks/useKeyboardShortcuts';
+import { toDownloadFile, nanoid, toBase64 } from '@utils/utils';
 
 export default observer(() => {
     const [loading, setLoading] = useState(false);
@@ -92,12 +91,43 @@ export default observer(() => {
         });
         setLoading(false);
     }
+    function toTop(url, fileName) {
+        window.parent.postMessage({
+            type: 'saveImageDateURL', data: {
+                url,
+                fileName,
+            }
+        }, '*');
+    };
+    const toSave = async () => {
+        if (!stores.editor.isEditing) return;
+        if (loading) return;
+        const key = nanoid();
+        setLoading(true);
+        stores.editor.message.open({
+            key,
+            type: 'loading',
+            content: '保存中...',
+        });
+        await stores.editor.app.tree.export('png', { blob: true, pixelRatio: ratio }).then(async result => {
+            const { data } = result;
+            const dataURL = await toBase64(data);
+            toTop(dataURL, `${key}.png`);
+        }).catch(() => {
+            stores.editor.message.open({
+                key,
+                type: 'error',
+                content: '保存失败!',
+            });
+            toTop('fail', `${key}.png`);
+        });
+        setLoading(false);
+    }
     const confirm = () => {
         stores.editor.destroy();
         stores.editor.clearImg();
         stores.editor.clearFun && stores.editor.clearFun();
     }
-    useKeyboardShortcuts(() => toDownload(), () => toCopy(), [toDownload, toCopy]);
     const content = (<div>
         <div className="p-2 [&_.ant-segmented]:w-full [&_.ant-segmented-item]:w-[33%]">
             <div className="text-xs text-gray-400 mb-2">格式</div>
@@ -133,30 +163,38 @@ export default observer(() => {
                 }}
             >
                 <div className='ant-space-compact flex flex-1'>
-                    <Tooltip placement='top' title={<span>下载 {modKey} + S</span>}>
+                    <Tooltip placement='top' title={<span>保存</span>}>
                         <Button
                             type='primary'
                             size='large'
                             loading={loading}
-                            icon={<Icon.ImageDown size={18} />}
+                            icon={<Icon.Save size={18} />}
                             className='rounded-se-none flex-1 rounded-ee-none me-[-1px] hover:z-[1] border-r-white/30'
-                            onClick={toDownload}
+                            onClick={toSave}
                         >
                             <div className='leading-4 px-2'>
                                 <div className='text-sm leading-4 font-semibold'>
-                                    下载
+                                    保存
                                 </div>
                                 <div className='text-xs'>{ratio}x {format.toLocaleUpperCase()}</div>
                             </div>
                         </Button>
                     </Tooltip>
-                    <Tooltip placement='top' title={<span>复制 {modKey} + C</span>}>
+                    <Tooltip placement='top' title={<span>下载</span>}>
                         <Button
                             type='primary'
                             size='large'
+                            icon={<Icon.ImageDown size={18} />}
+                            loading={loading}
+                            className='me-[7px] rounded-ss-none rounded-es-none border-l-white/30'
+                            onClick={toDownload}
+                        />
+                    </Tooltip>
+                    <Tooltip placement='top' title={<span>复制</span>}>
+                        <Button
+                            size='large'
                             icon={<Icon.Copy size={18} />}
                             loading={loading}
-                            className='rounded-ss-none rounded-es-none border-l-white/30'
                             onClick={toCopy}
                         />
                     </Tooltip>
@@ -174,7 +212,9 @@ export default observer(() => {
                     }}
                     onOpenChange={handleOpenChange}
                 >
-                    <Button size='large' icon={<Icon.Settings2 size={18} />} />
+                    <Tooltip placement='top' title={<span>设置</span>}>
+                        <Button size='large' icon={<Icon.Settings2 size={18} />} />
+                    </Tooltip>
                 </Popover>
                 {stores.editor.img?.src &&
                     <Popconfirm
