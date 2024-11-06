@@ -213,7 +213,7 @@ export default observer(() => {
                     onOpenChange={handleOpenChange}
                 >
                     <Tooltip placement='top' title={<span>设置</span>}>
-                        <Button size='large' icon={<Icon.Settings2 size={18} />} />
+                        <Button size='large' className='me-[5px]' icon={<Icon.Settings2 size={18} />} />
                     </Tooltip>
                 </Popover>
                 {stores.editor.img?.src &&
